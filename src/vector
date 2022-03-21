@@ -1,0 +1,8 @@
+#pragma once
+
+#include "impl/vector.h"
+namespace std
+{
+	template<typename T>
+	using vector = cz::vector<T>;
+}

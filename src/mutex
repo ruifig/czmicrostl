@@ -1,0 +1,26 @@
+#pragma once
+
+namespace std
+{
+
+/*
+ * Mock mutex.
+ * I'll implement it at some later point if it's needed
+ */
+class mutex
+{
+};
+
+/*
+ * Mock unique_lock.
+ * I'll implement it at some later point if it's needed
+ */
+template<typename T>
+class unique_lock
+{
+public:
+	unique_lock(T mtx) {}
+};
+
+
+} // namespace std

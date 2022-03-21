@@ -1,0 +1,28 @@
+#pragma once
+
+#include <type_traits>
+
+// Copied from https://stackoverflow.com/questions/27501400/the-implementation-of-stdforward
+namespace std
+{
+	template <class T>
+	inline T&& forward(typename remove_reference<T>::type& t) noexcept
+	{
+		return static_cast<T&&>(t);
+	}
+
+	template <class T>
+	inline T&& forward(typename remove_reference<T>::type&& t) noexcept
+	{
+		static_assert(!std::is_lvalue_reference_v<T>,
+					"Can not forward an rvalue as an lvalue.");
+		return static_cast<T&&>(t);
+	}
+
+	template <typename T>
+	constexpr typename std::remove_reference<T>::type&&
+	move(T&& t) noexcept
+	{
+		return static_cast<typename std::remove_reference<T>::type &&>(t);
+	}
+}

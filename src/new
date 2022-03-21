@@ -1,0 +1,12 @@
+#pragma once
+
+#include <stdlib.h>
+
+// new
+inline void * operator new (size_t size) { return malloc (size); }
+// placement new
+inline void * operator new (size_t size, void * ptr) { return ptr; }
+// delete
+inline void operator delete (void * ptr) { free (ptr); }
+
+
